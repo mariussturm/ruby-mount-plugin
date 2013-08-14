@@ -10,7 +10,7 @@ class RubyMountWrapper < Jenkins::Tasks::BuildWrapper
   end
 
   def ruby_installed?
-    File.exists?(File.join(@rpath, 'bin', 'ruby'))
+     @launcher.execute("bash", "-c", "test -f #{File.join(@rpath, 'bin', 'ruby')}") == 0
   end
 
   def setup(build, launcher, listener)
@@ -29,11 +29,12 @@ class RubyMountWrapper < Jenkins::Tasks::BuildWrapper
 
     # create gem directory in our workspace
     workspace_gem_path = File.join(workspace, 'gems')
-    listener << "Create gem directory #{workspace_gem_path} if needed\n"
-    Dir.mkdir(workspace_gem_path) if ! File.exists? workspace_gem_path
+    listener << "Create gem directory #{workspace_gem_path}\n"
+    @launcher.execute("bash", "-c", "mkdir -p #{workspace_gem_path}")
 
-    gems_version    = File.basename(Dir.glob(File.join(@rpath, 'lib', 'ruby', 'gems', '*')).first)
-    system_gem_path = File.join(@rpath, 'lib', 'ruby', 'gems', gems_version)
+    gems_version    = StringIO.new()
+    @launcher.execute("bash", "-c", "ls -1t #{File.join(@rpath, 'lib', 'ruby', 'gems')} | head -1", {:out => gems_version})
+    system_gem_path = File.join(@rpath, 'lib', 'ruby', 'gems', gems_version.string)
 
     # Setup ruby environment
     build.env["PATH+RUBY"] = File.join(@rpath, 'bin')
