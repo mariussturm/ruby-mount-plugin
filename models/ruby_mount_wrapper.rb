@@ -1,7 +1,7 @@
 require 'stringio'
 
 class RubyMountWrapper < Jenkins::Tasks::BuildWrapper
-  display_name "Run the build in a custome ruby environment"
+  display_name "Run the build in a custom ruby environment"
 
   attr_accessor :rpath
 
