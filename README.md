@@ -1,7 +1,7 @@
 Jenkins ruby mount plugin
 ==========
 
-Run your Jenkins build under a custome ruby installation.
+Run your Jenkins build under a custom ruby installation.
 
 # Description
 
@@ -9,7 +9,7 @@ The idea is to compile your very own ruby with maybe some patches and some gems 
 this and deploy it to your production servers.
 
 On the Jenkins side you want to use exactly the same package and not rvm or rbenv. So you can
-make this custome ruby available to your build via this plugin.
+make this custom ruby available to your build via this plugin.
  
 The PATH environment variable will be set to your ruby installation. You can just use 'ruby' or 'gem'
 in your build script.
