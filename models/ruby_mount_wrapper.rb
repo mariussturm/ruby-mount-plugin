@@ -37,9 +37,10 @@ class RubyMountWrapper < Jenkins::Tasks::BuildWrapper
     system_gem_path = File.join(@rpath, 'lib', 'ruby', 'gems', gems_version.string.chomp)
 
     # Setup ruby environment
-    build.env["PATH+RUBY"] = File.join(@rpath, 'bin')
-    build.env["GEM_HOME"]  = workspace_gem_path
-    build.env["GEM_PATH"]  = [workspace_gem_path, system_gem_path].join(':')
+    build.env["PATH+RUBY"]   = File.join(@rpath, 'bin')
+    build.env["PATH+GEMBIN"] = File.join(workspace_gem_path, 'bin')
+    build.env["GEM_HOME"]    = workspace_gem_path
+    build.env["GEM_PATH"]    = [workspace_gem_path, system_gem_path].join(':')
   end
 
   private
