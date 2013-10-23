@@ -28,7 +28,7 @@ class RubyMountWrapper < Jenkins::Tasks::BuildWrapper
     end
 
     # create gem directory in our workspace
-    workspace_gem_path = File.join(workspace, '.gems')
+    workspace_gem_path = File.join(workspace, 'gems')
     listener << "Create gem directory #{workspace_gem_path}\n"
     @launcher.execute("bash", "-c", "mkdir -p #{workspace_gem_path}")
 
