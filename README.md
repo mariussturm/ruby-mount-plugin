@@ -14,7 +14,7 @@ make this custom ruby available to your build via this plugin.
 The PATH environment variable will be set to your ruby installation. You can just use 'ruby' or 'gem'
 in your build script.
 
-Gems will be installed in the workspace of the job under '<workspace>/.gems'. You can wipe the workspace through
+Gems will be installed in the workspace of the job under '/gems'. You can wipe the workspace through
 the Jenkins UI and all gems will be reinstalled on the next build.
 
 # Installation
