@@ -25,5 +25,8 @@ the Jenkins UI and all gems will be reinstalled on the next build.
 
 Upload pkg/ruby-mount.hpi to your Jenkins instance under /pluginManager/advanced
 
+# Bugs
+This plugin is not working in combination with the EnvInject plugin
+
 # License
 This is licensed under the MIT license.
